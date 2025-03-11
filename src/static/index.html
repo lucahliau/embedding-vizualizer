@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Embedding Visualization</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Plotly.js for interactive visualization -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Product Embedding Visualization</h1>
+    </header>
+    
+    <div class="container">
+        <div class="controls">
+            <div class="filter-section">
+                <h2>Filters</h2>
+                <div class="filter-group">
+                    <label for="category-select">Category:</label>
+                    <select id="category-select">
+                        <option value="clothing">Clothing</option>
+                        <option value="footwear">Footwear</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="gender-select">Gender:</label>
+                    <select id="gender-select">
+                        <option value="all">All</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="unisex">Unisex</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="limit-input">Max Items:</label>
+                    <input type="number" id="limit-input" min="100" max="10000" value="1000">
+                </div>
+                
+                <button id="update-button">Update Visualization</button>
+            </div>
+            
+            <div class="upload-section">
+                <h2>Upload Data</h2>
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label for="file-input">Upload CSV/JSON:</label>
+                        <input type="file" id="file-input" accept=".csv,.json">
+                    </div>
+                    <button type="submit">Upload & Visualize</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Processing embeddings...</p>
+            </div>
+            
+            <div id="plot-container"></div>
+        </div>
+        
+        <div id="product-detail" class="hidden">
+            <div class="detail-header">
+                <h3>Product Details</h3>
+                <button id="close-detail">×</button>
+            </div>
+            <div class="detail-content">
+                <div class="product-image">
+                    <img id="product-image" src="" alt="Product Image">
+                </div>
+                <div class="product-info">
+                    <h4 id="product-title"></h4>
+                    <p>ID: <span id="product-id"></span></p>
+                    <p>Category: <span id="product-category"></span></p>
+                    <p>Gender: <span id="product-gender"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Embedding Visualization Service</p>
+    </footer>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
